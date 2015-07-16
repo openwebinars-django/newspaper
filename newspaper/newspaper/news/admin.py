@@ -4,7 +4,9 @@ from newspaper.news.models import News, Event
 
 
 class NewsAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'publish_date')
+    list_filter = ('publish_date',)
+    search_fields = ('title',)
 
 
 class EventAdmin(admin.ModelAdmin):
