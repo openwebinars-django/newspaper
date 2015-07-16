@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -20,14 +21,27 @@ def news_add(request):
     data = None
     if request.method == 'POST':
         data = request.POST
-    news_form = NewsForm(data=data)
+    initial = {'publish_date': datetime.now()}
+    news_form = NewsForm(data=data,
+                         initial=initial)
     if news_form.is_valid():
         news_form.save()
-        return HttpResponseRedirect('../')
+        return HttpResponseRedirect(reverse('news_list'))
     return render_to_response('news/news_add.html',
                               {'news_form': news_form},
                               context_instance=RequestContext(request))
 
 
 def news_edit(request, newsitem_pk):
-    pass
+    data = None
+    if request.method == 'POST':
+        data = request.POST
+    news_item = News.objects.get(pk=newsitem_pk)
+    news_form = NewsForm(data=data,
+                         instance=news_item)
+    if news_form.is_valid():
+        news_form.save()
+        return HttpResponseRedirect(reverse('news_list'))
+    return render_to_response('news/news_edit.html',
+                              {'news_form': news_form},
+                              context_instance=RequestContext(request))
