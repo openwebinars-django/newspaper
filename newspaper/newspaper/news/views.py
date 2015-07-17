@@ -7,11 +7,11 @@ from django.template import RequestContext
 
 from newspaper.news.forms import NewsForm
 from newspaper.news.models import News
+from newspaper.news.managers import BaseNewsManager
 
 
 def news_list(request):
-    news = News.objects.filter(
-        publish_date__lte=datetime.now()).order_by('publish_date')
+    news = News.objects.published()
     return render_to_response('news/news_list.html',
                               {'news': news},
                               context_instance=RequestContext(request))
