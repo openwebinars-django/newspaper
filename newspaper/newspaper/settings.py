@@ -105,12 +105,4 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'newspaper', 'static')]
 
-
-
-'''
-Paloma Cortes, Issue: Creacion del listado de noticias paginado
-
-Variable para paginacion, total de elementos por pagina
-
-''' 
 PAGINATION_PAGES = 6

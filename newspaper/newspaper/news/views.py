@@ -27,7 +27,9 @@ def news_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         news = paginator.page(paginator.num_pages)
 
-    return render_to_response('news/news_list.html', {"news": news})
+    return render_to_response('news/news_list.html',
+                              {"news": news},
+                              context_instance=RequestContext(request))
 
 
 def news_add(request):
