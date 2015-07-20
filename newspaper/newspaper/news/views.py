@@ -1,6 +1,7 @@
 from datetime import datetime
 
 from django.conf import settings
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponseRedirect
@@ -32,6 +33,7 @@ def news_list(request):
                               context_instance=RequestContext(request))
 
 
+@login_required(login_url='/admin/')
 def news_add(request):
     data = None
     if request.method == 'POST':
@@ -47,6 +49,7 @@ def news_add(request):
                               context_instance=RequestContext(request))
 
 
+@login_required(login_url='/admin/')
 def news_edit(request, newsitem_pk):
     data = None
     if request.method == 'POST':
