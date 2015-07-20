@@ -16,10 +16,12 @@ class NewsForm(forms.ModelForm):
 #formulario de Eventos
 class EventsForm(forms.ModelForm):
 
-    class Meta:
-        model = Event
-        fields = '__all__'         
-        start_date = forms.DateTimeField(
+    start_date = forms.DateTimeField(
         required=False,
         widget=DateTimePicker(options={"format": "YYYY-MM-DD HH:mm",
                                        "pickSeconds": False}))
+
+    class Meta:
+        model = Event
+        fields = '__all__'         
+        
