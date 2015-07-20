@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load i18n bootstrap3 %}
+
+
+{% block head_added %}
+
+ 
+
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-6">
+            <form action="." method="post" class="form">
+                {% csrf_token %}
+                <table>
+                {% bootstrap_form events_form %}
+                </table>
+                {% buttons %}
+                    <button type="submit" class="btn btn-primary">
+                    {% bootstrap_icon "star" %} {% trans "Submit" %}
+                    </button>
+                {% endbuttons %}
+            </form>
+        </div>
+        <div class="col-lg-6">
+            
+        </div>
+    </div>
+{% endblock %}
