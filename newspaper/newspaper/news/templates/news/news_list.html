@@ -19,45 +19,29 @@
             <a href="{% url "news_add" %}" class="btn btn-default">{% trans "Add news" %}</a>
         </div>
     </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="pagination pagination-sm">
+            {% if news.has_previous %}   
+            <li><a href="?page={{ news.previous_page_number }}">&laquo;</a></li>  
+            {% else %}
+                <li class="disabled">
+                    <span>&laquo;</span>
+                </li>  
+            {% endif %}
 
+            {% for i in news.paginator.page_range  %}
+                <li><a href="?page={{ i }}">{{ i }}</a></li>
+            {% endfor %}
 
-<!--
-    Paloma Cortés, Issue: Creación del listado de noticias paginado
-
-    https://docs.djangoproject.com/en/1.8/topics/pagination/
-
--->
-
-<div class="container">
-    <ul class="pagination pagination-sm">
-       
-    {% if news.has_previous %}   
-      <li><a href="?page={{ news.previous_page_number }}">&laquo;</a></li>  
-    {% else %}
-         <li class="disabled">
-             <span>&laquo;</span>
-         </li>  
-    {% endif %}       
-
-    {% for i in news.paginator.page_range  %}
-
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
-          
-    {% endfor %}
-
-       
-    {% if news.has_next %}   
-      <li><a href="?page={{ news.next_page_number }}">&raquo;</a></li>
-    {% else %}   
-         <li class="disabled">
-             <span>&raquo;</span>
-         </li>
-    {% endif %}
-
-    </ul>
-</div>
-
-
-
-
+            {% if news.has_next %}   
+            <li><a href="?page={{ news.next_page_number }}">&raquo;</a></li>
+            {% else %}   
+                <li class="disabled">
+                    <span>&raquo;</span>
+                </li>
+            {% endif %}
+            </ul>
+        </div>
+    </div>
 {% endblock %}
