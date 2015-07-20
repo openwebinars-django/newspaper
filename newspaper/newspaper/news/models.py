@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -8,6 +9,7 @@ class BaseNews(models.Model):
     title = models.CharField(_('title'), max_length=255)
     description = models.TextField(_('description'), blank=True, null=True)
     publish_date = models.DateTimeField(_('publish date'))
+    owner = models.ForeignKey(User, null=True)
 
     class Meta:
         abstract = True
