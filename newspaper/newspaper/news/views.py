@@ -7,7 +7,6 @@ from django.template import RequestContext
 
 from newspaper.news.forms import NewsForm
 from newspaper.news.models import News
-from newspaper.news.managers import BaseNewsManager
 
 
 def news_list(request):

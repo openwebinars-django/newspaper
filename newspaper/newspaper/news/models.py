@@ -20,7 +20,6 @@ class BaseNews(models.Model):
         return self.title
 
 
-
 class News(BaseNews):
 
     class Meta:
