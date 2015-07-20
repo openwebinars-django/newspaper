@@ -63,3 +63,10 @@ def news_edit(request, newsitem_pk):
     return render_to_response('news/news_edit.html',
                               {'news_form': news_form},
                               context_instance=RequestContext(request))
+
+
+@login_required(login_url='/admin/')
+def news_delete(request, newsitem_pk):
+    news_item = get_object_or_404(News, pk=newsitem_pk)
+    news_item.delete()
+    return HttpResponseRedirect(reverse('news_list'))
