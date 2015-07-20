@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from newspaper.news.managers import BaseNewsManager
+
 
 @python_2_unicode_compatible
 class BaseNews(models.Model):
@@ -9,11 +11,14 @@ class BaseNews(models.Model):
     description = models.TextField(_('description'), blank=True, null=True)
     publish_date = models.DateTimeField(_('publish date'))
 
+    objects = BaseNewsManager()
+
     class Meta:
         abstract = True
 
     def __str__(self):
         return self.title
+
 
 
 class News(BaseNews):
