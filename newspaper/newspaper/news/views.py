@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
 
@@ -51,7 +51,7 @@ def news_edit(request, newsitem_pk):
     data = None
     if request.method == 'POST':
         data = request.POST
-    news_item = News.objects.get(pk=newsitem_pk)
+    news_item = get_object_or_404(News, pk=newsitem_pk)
     news_form = NewsForm(data=data,
                          instance=news_item)
     if news_form.is_valid():
