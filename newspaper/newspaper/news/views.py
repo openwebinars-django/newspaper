@@ -27,7 +27,9 @@ def news_add(request):
                          initial=initial)
     if news_form.is_valid():
         news_form.save()
-        messages.add_message(request, messages.SUCCESS, "'%s' successfully added" % data['title'])
+        messages.add_message(request,
+                             messages.SUCCESS,
+                             "'%s' successfully added" % data['title'])
         return HttpResponseRedirect(reverse('news_list'))
     return render_to_response('news/news_add.html',
                               {'news_form': news_form},
@@ -43,7 +45,9 @@ def news_edit(request, newsitem_pk):
                          instance=news_item)
     if news_form.is_valid():
         news_form.save()
-        messages.add_message(request, messages.SUCCESS, "'%s' successfully edited" % news_item.title)
+        messages.add_message(request,
+                             messages.SUCCESS,
+                             "'%s' successfully edited" % news_item.title)
         return HttpResponseRedirect(reverse('news_list'))
     return render_to_response('news/news_edit.html',
                               {'news_form': news_form},
