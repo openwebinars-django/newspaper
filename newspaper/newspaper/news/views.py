@@ -1,10 +1,13 @@
+import json
+
 from datetime import datetime
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
-from django.http import HttpResponseRedirect
+from django.http import (HttpResponseRedirect,
+                         HttpResponseBadRequest, HttpResponse)
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 
@@ -67,6 +70,10 @@ def news_edit(request, newsitem_pk):
 
 @login_required(login_url='/admin/')
 def news_delete(request, newsitem_pk):
+    if request.method != 'POST':
+        return HttpResponseBadRequest()
     news_item = get_object_or_404(News, pk=newsitem_pk)
     news_item.delete()
+    if request.is_ajax():
+        return HttpResponse(json.dumps({'status': 'ok'}))
     return HttpResponseRedirect(reverse('news_list'))
