@@ -12,8 +12,8 @@ class BaseNewsQuerySet(QuerySet):
 
 class BaseNewsManager(models.Manager):
 
-    def get_query_set(self):
+    def get_queryset(self):
         return BaseNewsQuerySet(self.model, using=self._db)
 
     def published(self):
-        return self.get_query_set().published()
+        return self.get_queryset().published()
