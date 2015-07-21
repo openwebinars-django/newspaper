@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for newspaper project.
 
@@ -50,6 +52,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'newspaper.middleware.No404Middleware',
 )
 
@@ -90,6 +93,11 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'es-ES'
+
+LANGUAGES = (
+    ('es', u'Español'),
+    ('en', 'English'),
+)
 
 TIME_ZONE = 'UTC'
 
