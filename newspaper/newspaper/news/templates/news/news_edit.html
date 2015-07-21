@@ -18,10 +18,12 @@
             </form>
         </div>
         <div class="col-lg-6">
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
-                {% trans "Delete news" %}
-            </button>
-
+            <form action="{% url "news_delete" news_form.instance.pk %}" method="post">
+                {% csrf_token %}
+                <button id="deleteNewsAction" type="submit" class="btn btn-danger" data-toggle="modal" data-target="#myModal">
+                    {% trans "Delete news" %}
+                </button>
+            </form>
             <!-- Modal -->
             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -46,7 +48,8 @@
     <script type="text/javascript">
         (function($){
             $(document).ready(function () {
-                $("#deleteNewsSubmit").click(function(){
+                $("#deleteNewsAction").attr("type", "button");
+                $("#deleteNewsSubmit").click(function() {
                     $.ajax("{% url "news_delete" news_form.instance.pk %}",
                            {method: 'post',
                             data: {csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val()},
