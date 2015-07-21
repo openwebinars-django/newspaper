@@ -118,3 +118,5 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'newspaper', 'static')]
 PAGINATION_PAGES = 6
 
 BLOG_URL = 'http://blog.example.com/foo'
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'newspaper', 'locale')]
