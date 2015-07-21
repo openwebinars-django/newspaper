@@ -1,0 +1,83 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-07-21 20:09+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:10
+msgid "title"
+msgstr "título"
+
+#: models.py:11
+msgid "description"
+msgstr "descripción"
+
+#: models.py:12
+msgid "publish date"
+msgstr "fecha de publicación"
+
+#: models.py:26
+msgid "news item"
+msgstr "noticia"
+
+#: models.py:27
+msgid "news"
+msgstr "noticias"
+
+#: models.py:31
+msgid "start date"
+msgstr "fecha de comienzo"
+
+#: models.py:32
+msgid "end date"
+msgstr "fecha de finalización"
+
+#: models.py:35
+msgid "event"
+msgstr "evento"
+
+#: models.py:36
+msgid "events"
+msgstr "eventos"
+
+#: templates/news/news_add.html:15 templates/news/news_edit.html:15
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/news/news_edit.html:24
+msgid "Delete news"
+msgstr "Borrar noticias"
+
+#: templates/news/news_edit.html:33
+msgid "Are you sure that you want to delete this news?"
+msgstr "¿Está usted seguro de que quiere borrar esta noticia?"
+
+#: templates/news/news_edit.html:36
+msgid "Close"
+msgstr "Cerrar"
+
+#: templates/news/news_edit.html:37
+msgid "Delete"
+msgstr "Eliminar"
+
+#: templates/news/news_list.html:11
+msgid "Edit"
+msgstr "Editar"
+
+#: templates/news/news_list.html:20
+msgid "Add news"
+msgstr "Añadir noticia"
