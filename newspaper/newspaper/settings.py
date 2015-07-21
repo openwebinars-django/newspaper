@@ -54,6 +54,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'newspaper.middleware.No404Middleware',
+    'newspaper.middleware.LocaleMiddleware',
 )
 
 ROOT_URLCONF = 'newspaper.urls'
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.i18n',
                 'newspaper.context_processors.blog',
             ],
         },
