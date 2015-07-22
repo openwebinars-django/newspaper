@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client
 
@@ -15,7 +16,7 @@ class NewsTestCase(TestCase):
         news = News.objects.create(title='Mi noticia test',
                                    description='Mi descripcion test',
                                    publish_date=datetime.now())
-        response = self.client.get('/')
+        response = self.client.get(reverse('news_list'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(news.title, response.content)
         self.assertIn(news.description, response.content)
