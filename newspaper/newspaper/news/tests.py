@@ -2,6 +2,7 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.utils import six
 from django.test import TestCase
 from django.test.client import Client
 
@@ -53,3 +54,9 @@ class NewsTestCase(TestCase):
                                      data={})
         self.assertEqual(response4.status_code, 200)
         self.assertIn(b'Este campo es obligatorio.', response4.content)
+
+    def test_print_news(self):
+        news = News.objects.create(title='Mi noticia impresion test',
+                                   description='Mi descripcion impresion test',
+                                   publish_date=datetime.now())
+        self.assertEqual(news.title, six.text_type(news))
