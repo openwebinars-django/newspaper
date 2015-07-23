@@ -4,12 +4,13 @@ from datetime import datetime
 
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import (HttpResponseRedirect,
                          HttpResponseBadRequest, HttpResponse)
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
+from django.views.generic import CreateView, ListView
 
 
 from newspaper.news.forms import NewsForm
@@ -77,3 +78,31 @@ def news_delete(request, newsitem_pk):
     if request.is_ajax():
         return HttpResponse(json.dumps({'status': 'ok'}))
     return HttpResponseRedirect(reverse('news_list'))
+
+
+class NewsListView(ListView):
+    template_name = 'news/news_list.html'
+    model = News
+    context_object_name = 'news'
+
+    def get_queryset(self):
+        return self.model.objects.published()
+
+
+news_list_v2 = NewsListView.as_view()
+
+
+class NewsAddView(CreateView):
+    model = News
+    form = NewsForm
+    template_name = 'news/news_add.html'
+    fields = '__all__'
+    success_url = reverse_lazy('news_list_v2')
+
+    def get_context_data(self, *args, **kwargs):
+        ctx = super(NewsAddView, self).get_context_data(*args, **kwargs)
+        ctx['news_form'] = ctx['form']
+        return ctx
+
+
+news_add_v2 = NewsAddView.as_view()
