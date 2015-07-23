@@ -12,5 +12,6 @@ urlpatterns = patterns('newspaper.news.views',
 
     url(r'^api/news/$', 'news_list_api', name='news_list_api'),
     url(r'^api/news/add/$', 'news_add_api', name='news_add_api'),
+    url(r'^api/news/(?P<newsitem_pk>\d+)/$', 'news_detail_api', name='news_detail_api'),
 
 )
