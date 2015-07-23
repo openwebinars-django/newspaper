@@ -111,8 +111,15 @@ class NewsAddView(CreateView):
 news_add_v2 = NewsAddView.as_view()
 
 
+class NewsPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 50
+
+
 class NewsListAPI(rfapiviews.ListAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
+    pagination_class = NewsPagination
 
 news_list_api = NewsListAPI.as_view()
