@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'newspaper.news',
     'bootstrap3',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (

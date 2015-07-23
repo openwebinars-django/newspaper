@@ -12,9 +12,12 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.views.generic import CreateView, ListView
 
+from rest_framework import generics as rfapiviews
+from rest_framework.pagination import PageNumberPagination
 
 from newspaper.news.forms import NewsForm
 from newspaper.news.models import News
+from newspaper.news.serializers import NewsSerializer
 
 
 def news_list(request):
@@ -106,3 +109,10 @@ class NewsAddView(CreateView):
 
 
 news_add_v2 = NewsAddView.as_view()
+
+
+class NewsListAPI(rfapiviews.ListAPIView):
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+
+news_list_api = NewsListAPI.as_view()

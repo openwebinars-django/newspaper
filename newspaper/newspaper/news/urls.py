@@ -9,4 +9,7 @@ urlpatterns = patterns('newspaper.news.views',
 
     url(r'^v2/$', 'news_list_v2', name='news_list_v2'),
     url(r'^v2/news/add/$', 'news_add_v2', name='news_add_v2'),
+
+    url(r'^api/news/$', 'news_list_api', name='news_list_api'),
+
 )
