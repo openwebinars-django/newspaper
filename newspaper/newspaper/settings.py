@@ -123,3 +123,7 @@ PAGINATION_PAGES = 6
 BLOG_URL = 'http://blog.example.com/foo'
 
 LOCALE_PATHS = [os.path.join(BASE_DIR, 'newspaper', 'locale')]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+}

@@ -121,5 +121,6 @@ class NewsListAPI(rfapiviews.ListAPIView):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     pagination_class = NewsPagination
+    filter_fields = ('title',)
 
 news_list_api = NewsListAPI.as_view()
