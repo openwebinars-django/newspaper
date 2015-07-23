@@ -17,7 +17,7 @@ from rest_framework.pagination import PageNumberPagination
 
 from newspaper.news.forms import NewsForm
 from newspaper.news.models import News
-from newspaper.news.serializers import NewsSerializer
+from newspaper.news.serializers import NewsSerializer, NewsSerializerComplete
 
 
 def news_list(request):
@@ -124,3 +124,10 @@ class NewsListAPI(rfapiviews.ListAPIView):
     filter_fields = ('title',)
 
 news_list_api = NewsListAPI.as_view()
+
+
+class NewsAddAPI(rfapiviews.CreateAPIView):
+    model = News
+    serializer_class = NewsSerializerComplete
+
+news_add_api = NewsAddAPI.as_view()
